@@ -49,7 +49,7 @@ function test(num) {
 	}
 	
 	func(num);
-	console.log(localNum);
+	console.log(localNum); //не объявлена
 }
 
 test(1); //ошибка
