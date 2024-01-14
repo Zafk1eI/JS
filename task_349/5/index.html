@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input id="elem" value="45">
+	<input id="elem1" value="15">
+	<input id="elem2" value="5">
+	<input id="elem3" value="8">
+	<input id="elem4" value="12">
+	<button id="Button">button</button>
+
+	<p id="p"></p>
+
+
+	<script>
+		let elem = document.querySelector('#elem');
+		let elem1 = document.querySelector('#elem1');
+		let elem2 = document.querySelector('#elem2');
+		let elem3 = document.querySelector('#elem3');
+		let elem4 = document.querySelector('#elem4');
+		let button = document.querySelector('#Button');
+		let p = document.querySelector('#p');
+		let avg = (Number(elem.value) + Number(elem1.value) + Number(elem2.value) + Number(elem3.value) + Number(elem4.value)) / 5;
+		button.addEventListener('click', function () {
+			p.innerHTML = avg;
+		});
+	</script>
+</body>
+</html>

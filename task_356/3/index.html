@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<input class="input" value="1">
+	<input class="input" value="2">
+
+	<input id="button" type="submit" value="Нажать">
+
+	<p class="elem">Абзац</p>
+
+	<script>
+		let elems = document.querySelector('.elem');
+		let inputs = document.querySelectorAll('.input');
+		let button = document.getElementById('button');
+		button.addEventListener('click', func);
+
+		function func() {
+			let sum = 0;
+			elems.textContent = '';
+			for (let input of inputs) {
+				sum += Number(input.value);
+			}
+			elems.textContent = sum;
+		}
+	</script>
+</body>
+
+</html>

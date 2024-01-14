@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<input id="input1" type="submit" value="5">
+	<input id="input2" type="submit" value="2">
+	<input id="input3" type="submit" value="3">
+
+	<script>
+		let input1 = document.querySelector('#input1');
+		let input2 = document.querySelector('#input2');
+		let input3 = document.querySelector('#input3');
+
+		input1.addEventListener('blur', func);
+		input2.addEventListener('blur', func);
+		input3.addEventListener('blur', func);
+
+
+		function func() {
+			this.value = Number(this.value) * Number(this.value);
+		}
+	</script>
+</body>
+
+</html>

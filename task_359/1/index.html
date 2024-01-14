@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<a id="Link" href="https://code.mu/ru/javascript/book/prime/dom/basis/handlers-unbinding/">Ссылка </a>
+	<button id="button">Добавить текст</button>
+
+	<script>
+		let Link = document.querySelector('#Link');
+		let button = document.querySelector('#button');
+		button.addEventListener('click', func);
+
+		function func() {
+			Link.innerHTML += Link.href;
+			this.removeEventListener('click', func);
+		}
+
+	</script>
+</body>
+
+</html>

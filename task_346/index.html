@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="elem">text</p>
+    <button id="button" type="submit">text</button>
+    <p id="first">50</p>
+    <p id="second">100</p>
+    <button id="sum" type="submit">text</button>
+    <script>
+        let elem = document.querySelector('#elem');
+        let button = document.querySelector('#button');
+
+        button.addEventListener('click', function() {
+            console.log(elem.textContent);
+            elem.textContent = elem.textContent + '!';
+        });
+        let first = document.querySelector('#first');
+        let second = document.querySelector('#second');
+        let sum = document.querySelector('#sum');
+        sum.addEventListener('click', function() {
+            console.log(Number(first.textContent) + Number(second.textContent));
+        });
+    </script>
+</body>
+
+</html>

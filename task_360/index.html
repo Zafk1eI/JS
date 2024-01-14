@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<p>text1</p>
+	<p>text2</p>
+	<p>text3</p>
+
+	<script>
+		let elems = document.querySelectorAll('p');
+
+		for (let elem of elems) {
+			elem.addEventListener('click', func);
+		}
+
+		function func() {
+			this.textContent += '!';
+			this.removeEventListener('click', func);
+		}
+	</script>
+</body>
+
+</html>

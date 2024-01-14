@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<input id="elem" value="text">
+	<button id="myButton">button</button>
+
+	<p id="abz"></p>
+
+
+	<script>
+		let elem = document.querySelector('#elem');
+		let button = document.querySelector('#myButton');
+		let p = document.querySelector('#abz');
+
+		button.addEventListener('click', function () {
+			p.innerHTML = elem.value;
+		});
+
+	</script>
+</body>
+
+</html>

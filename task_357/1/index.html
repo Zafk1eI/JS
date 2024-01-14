@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<input class="button1" type="submit" value="1">
+	<input class="button2" type="submit" value="2">
+
+	<script>
+
+		let button1 = document.querySelector('.button1');
+		let button2 = document.querySelector('.button2');
+
+		button1.addEventListener('blur', func);
+		button2.addEventListener('blur', func);
+
+		function func() {
+			this.value = Number(this.value) + 1;
+		}
+	</script>
+</body>
+
+</html>

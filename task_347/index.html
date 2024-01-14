@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="elem"><b>text</b></p>
+    <button id="button" type="submit">text</button>
+    <p id="elem1">text push</p>
+    <button id="button1" type="submit">text</button>
+    <script>
+        let elem = document.querySelector('#elem');
+        let button = document.querySelector('#button');
+
+        let elem1 = document.querySelector('#elem1');
+        let button1 = document.querySelector('#button1');
+
+        button.addEventListener('click', function() {
+            console.log(elem.innerHTML); // выведет <b>text</b>
+        });
+
+        button1.addEventListener('click', function() {
+            elem1.innerHTML = '<b>' + elem1.innerHTML + '</b>';
+        });
+    </script>
+</body>
+
+</html>

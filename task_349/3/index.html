@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input id="elem" value="15">
+	<input id="elem1" value="">
+	<button id="myButton">button</button>
+
+	<p id="abz"></p>
+	
+
+	<script>
+	let elem = document.querySelector('#elem');
+	let elem1 = document.querySelector('#elem1');
+	let button = document.querySelector('#myButton');
+
+	button.addEventListener('click', function() {
+		elem1.value = Number(elem.value) * Number(elem.value);
+	});
+	
+	</script>
+</body>
+</html>
