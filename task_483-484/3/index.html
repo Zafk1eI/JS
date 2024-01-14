@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<input type="text" id="newItemText">
+<button onclick="addItem()">Add Item</button>
+
+<script>
+    function addItem() {
+        const newItemText = document.getElementById('newItemText').value;
+        if (newItemText) {
+            const li = document.createElement('li');
+            li.textContent = newItemText;
+            listElement.appendChild(li);
+            document.getElementById('newItemText').value = '';
+        }
+    }
+</script>
+</body>
+</html>

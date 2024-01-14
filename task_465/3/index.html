@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <ul id="elem"></ul>
+
+  <script>
+    // Ваш массив
+    var myArray = ["Элемент 1", "Элемент 2", "Элемент 3"];
+  
+    // Получаем ссылку на элемент <ul>
+    var ulElement = document.getElementById("elem");
+  
+    // Проходим по каждому элементу массива
+    myArray.forEach(function(item) {
+      // Создаем новый элемент <li>
+      var liElement = document.createElement("li");
+  
+      // Задаем текст для <li>
+      liElement.textContent = item;
+  
+      // Добавляем <li> в конец <ul>
+      ulElement.appendChild(liElement);
+  
+      // Добавляем обработчик событий для клика по <li>
+      liElement.addEventListener("click", function() {
+        // Добавляем '!' в конец текста элемента
+        liElement.textContent += '!';
+      });
+    });
+  </script>
+  
+
+</body>
+
+</html>
+

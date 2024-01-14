@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px dashed #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+        <p>text1 <span onclick="editText(this)">✎</span> <a href="#" onclick="deleteParagraph(this)">Delete</a> <a
+                href="#" onclick="underlineText(this)">Underline</a></p>
+        <p>text2 <span onclick="editText(this)">✎</span> <a href="#" onclick="deleteParagraph(this)">Delete</a> <a
+                href="#" onclick="underlineText(this)">Underline</a></p>
+        <p>text3 <span onclick="editText(this)">✎</span> <a href="#" onclick="deleteParagraph(this)">Delete</a> <a
+                href="#" onclick="underlineText(this)">Underline</a></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

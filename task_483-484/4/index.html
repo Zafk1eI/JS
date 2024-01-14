@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script>
+        let myArray = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+        
+        // Получаем ссылку на элемент, в который будем добавлять список
+        let container = document.body;
+        
+        // Создаем элемент списка ul
+        let ul = document.createElement('ul');
+        
+        // Проходим по массиву и создаем элементы списка li для каждого элемента
+        myArray.forEach(function(item) {
+          let li = document.createElement('li');
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        
+        // Добавляем список в контейнер
+        container.appendChild(ul);
+        </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<ul id="employeesList"></ul>
+
+<script>
+  let employees = [
+    {name: 'employee1', age: 30, salary: 400},
+    {name: 'employee2', age: 31, salary: 500},
+    {name: 'employee3', age: 32, salary: 600},
+  ];
+
+  // Получаем ссылку на элемент <ul>
+  let ul = document.getElementById('employeesList');
+
+  // Проходим по массиву работников и создаем элементы <li>
+  employees.forEach(function(employee) {
+    let li = document.createElement('li');
+    li.textContent = `Name: ${employee.name}, Age: ${employee.age}, Salary: ${employee.salary}`;
+    
+    // Добавляем каждый элемент <li> в <ul>
+    ul.appendChild(li);
+  });
+</script>
+
+</body>
+</html>

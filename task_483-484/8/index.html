@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+    </table>
+<script>
+    const tableBody = document.getElementById('employeeTableBody');
+
+    tableBody.addEventListener('click', (event) => {
+        if (event.target.tagName === 'TD') {
+            const input = document.createElement('input');
+            input.value = event.target.textContent;
+
+            input.addEventListener('blur', () => {
+                event.target.textContent = input.value;
+                input.remove();
+            });
+
+            event.target.textContent = '';
+            event.target.appendChild(input);
+            input.focus();
+        }
+
+        // Если кликнули по ссылке "удалить"
+        if (event.target.tagName === 'A' && event.target.classList.contains('delete-link')) {
+            const row = event.target.closest('tr');
+            if (row) {
+                row.remove();
+            }
+        }
+    });
+
+    // Добавим пример данных в таблицу
+    const data = [
+        ['John Doe', '25', '50000'],
+        ['Jane Smith', '30', '60000'],
+        ['Bob Johnson', '35', '75000']
+    ];
+
+    data.forEach(rowData => {
+        const row = document.createElement('tr');
+        rowData.forEach(cellData => {
+            const cell = document.createElement('td');
+            cell.textContent = cellData;
+            row.appendChild(cell);
+        });
+
+        // Добавляем ячейку с ссылкой на удаление ряда
+        const deleteCell = document.createElement('td');
+        const deleteLink = document.createElement('a');
+        deleteLink.href = '#';
+        deleteLink.textContent = 'Delete';
+        deleteLink.classList.add('delete-link');
+        deleteCell.appendChild(deleteLink);
+        row.appendChild(deleteCell);
+
+        tableBody.appendChild(row);
+    });
+</script>
+</body>
+</html>

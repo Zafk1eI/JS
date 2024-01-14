@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+    </table>
+<script>
+    const tableBody = document.getElementById('employeeTableBody');
+
+    tableBody.addEventListener('click', (event) => {
+        if (event.target.tagName === 'TD') {
+            const input = document.createElement('input');
+            input.value = event.target.textContent;
+
+            input.addEventListener('blur', () => {
+                event.target.textContent = input.value;
+                input.remove();
+            });
+
+            event.target.textContent = '';
+            event.target.appendChild(input);
+            input.focus();
+        }
+    });
+
+    // Добавим пример данных в таблицу
+    const data = [
+        ['John Doe', '25', '50000'],
+        ['Jane Smith', '30', '60000'],
+        ['Bob Johnson', '35', '75000']
+    ];
+
+    data.forEach(rowData => {
+        const row = document.createElement('tr');
+        rowData.forEach(cellData => {
+            const cell = document.createElement('td');
+            cell.textContent = cellData;
+            row.appendChild(cell);
+        });
+        tableBody.appendChild(row);
+    });
+</script>
+</body>
+</html>

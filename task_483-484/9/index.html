@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+    </table>
+
+    <div>
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput">
+
+        <label for="ageInput">Age:</label>
+        <input type="text" id="ageInput">
+
+        <label for="salaryInput">Salary:</label>
+        <input type="text" id="salaryInput">
+
+        <button onclick="addEmployee()">Add Employee</button>
+    </div>
+
+<script>
+    const tableBody = document.getElementById('employeeTableBody');
+    const nameInput = document.getElementById('nameInput');
+    const ageInput = document.getElementById('ageInput');
+    const salaryInput = document.getElementById('salaryInput');
+
+    tableBody.addEventListener('click', (event) => {
+        if (event.target.tagName === 'TD') {
+            const input = document.createElement('input');
+            input.value = event.target.textContent;
+
+            input.addEventListener('blur', () => {
+                event.target.textContent = input.value;
+                input.remove();
+            });
+
+            event.target.textContent = '';
+            event.target.appendChild(input);
+            input.focus();
+        }
+
+        if (event.target.tagName === 'A' && event.target.classList.contains('delete-link')) {
+            const row = event.target.closest('tr');
+            if (row) {
+                row.remove();
+            }
+        }
+    });
+
+    function addEmployee() {
+        const name = nameInput.value;
+        const age = ageInput.value;
+        const salary = salaryInput.value;
+
+        if (name && age && salary) {
+            const row = document.createElement('tr');
+            const cells = [name, age, salary];
+
+            cells.forEach(cellData => {
+                const cell = document.createElement('td');
+                cell.textContent = cellData;
+                row.appendChild(cell);
+            });
+
+            const deleteCell = document.createElement('td');
+            const deleteLink = document.createElement('a');
+            deleteLink.href = '#';
+            deleteLink.textContent = 'Delete';
+            deleteLink.classList.add('delete-link');
+            deleteCell.appendChild(deleteLink);
+            row.appendChild(deleteCell);
+
+            tableBody.appendChild(row);
+
+            // Очищаем инпуты
+            nameInput.value = '';
+            ageInput.value = '';
+            salaryInput.value = '';
+        }
+    }
+</script>
+</body>
+</html>

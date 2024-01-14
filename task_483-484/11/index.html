@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <ul id="employeesList"></ul>
+
+    <script>
+      let employees = [
+        {name: 'employee1', age: 30, salary: 400},
+        {name: 'employee2', age: 31, salary: 500},
+        {name: 'employee3', age: 32, salary: 600},
+      ];
+    
+      let ul = document.getElementById('employeesList');
+    
+      employees.forEach(function(employee) {
+        let li = document.createElement('li');
+    
+        // Создаем элементы span для каждого поля (имени, возраста, зарплаты)
+        let nameSpan = document.createElement('span');
+        nameSpan.textContent = `Name: ${employee.name}`;
+        nameSpan.addEventListener('click', () => editField(nameSpan, 'name'));
+    
+        let ageSpan = document.createElement('span');
+        ageSpan.textContent = `Age: ${employee.age}`;
+        ageSpan.addEventListener('click', () => editField(ageSpan, 'age'));
+    
+        let salarySpan = document.createElement('span');
+        salarySpan.textContent = `Salary: ${employee.salary}`;
+        salarySpan.addEventListener('click', () => editField(salarySpan, 'salary'));
+    
+        // Добавляем элементы span в элемент li
+        li.appendChild(nameSpan);
+        li.appendChild(document.createTextNode(', '));
+        li.appendChild(ageSpan);
+        li.appendChild(document.createTextNode(', '));
+        li.appendChild(salarySpan);
+    
+        ul.appendChild(li);
+      });
+    
+      function editField(element, field) {
+        const input = document.createElement('input');
+        input.value = element.textContent.split(': ')[1].trim();
+    
+        input.addEventListener('blur', () => {
+          element.textContent = `${field.charAt(0).toUpperCase() + field.slice(1)}: ${input.value}`;
+          input.remove();
+        });
+    
+        element.textContent = '';
+        element.appendChild(input);
+        input.focus();
+      }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script>
+        // Ваш массив
+        let myArray = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+        
+        // Получаем ссылку на элемент, в который будем добавлять список
+        let container = document.body;
+        
+        // Создаем элемент списка ul
+        let ul = document.createElement('ul');
+        
+        // Проходим по массиву и создаем элементы списка li для каждого элемента
+        myArray.forEach(function(item) {
+          let li = document.createElement('li');
+          li.textContent = item;
+        
+          // Создаем элементы ссылок для удаления и перечеркивания
+          let deleteLink = document.createElement('a');
+          deleteLink.href = '#';
+          deleteLink.textContent = 'удалить';
+        
+          let strikeLink = document.createElement('a');
+          strikeLink.href = '#';
+          strikeLink.textContent = 'перечеркнуть';
+        
+          // Добавляем обработчики событий
+          deleteLink.addEventListener('click', function() {
+            ul.removeChild(li);
+          });
+        
+          strikeLink.addEventListener('click', function() {
+            li.style.textDecoration = 'line-through';
+          });
+        
+          // Добавляем ссылки "удалить" и "перечеркнуть" к элементу списка
+          li.appendChild(deleteLink);
+          li.appendChild(document.createTextNode(' | ')); // Добавляем разделитель
+          li.appendChild(strikeLink);
+        
+          // Добавляем элемент списка в ul
+          ul.appendChild(li);
+        });
+        
+        // Добавляем список в контейнер
+        container.appendChild(ul);
+        </script>
+</body>
+</html>

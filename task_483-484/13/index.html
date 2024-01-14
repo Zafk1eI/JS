@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <ul id="employeesList"></ul>
+
+    <form id="addEmployeeForm">
+      <label for="newName">Name:</label>
+      <input type="text" id="newName" required>
+    
+      <label for="newAge">Age:</label>
+      <input type="text" id="newAge" required>
+    
+      <label for="newSalary">Salary:</label>
+      <input type="text" id="newSalary" required>
+    
+      <button type="button" onclick="addNewEmployee()">Add Employee</button>
+    </form>
+    
+    <script>
+      let employees = [
+        {name: 'employee1', age: 30, salary: 400},
+        {name: 'employee2', age: 31, salary: 500},
+        {name: 'employee3', age: 32, salary: 600},
+      ];
+    
+      let ul = document.getElementById('employeesList');
+    
+      employees.forEach(function(employee) {
+        let li = createEmployeeListItem(employee);
+        ul.appendChild(li);
+      });
+    
+      function createEmployeeListItem(employee) {
+        let li = document.createElement('li');
+    
+        let nameSpan = document.createElement('span');
+        nameSpan.textContent = `Name: ${employee.name}`;
+        nameSpan.addEventListener('click', () => editField(nameSpan, 'name'));
+    
+        let ageSpan = document.createElement('span');
+        ageSpan.textContent = `Age: ${employee.age}`;
+        ageSpan.addEventListener('click', () => editField(ageSpan, 'age'));
+    
+        let salarySpan = document.createElement('span');
+        salarySpan.textContent = `Salary: ${employee.salary}`;
+        salarySpan.addEventListener('click', () => editField(salarySpan, 'salary'));
+    
+        li.appendChild(nameSpan);
+        li.appendChild(document.createTextNode(', '));
+        li.appendChild(ageSpan);
+        li.appendChild(document.createTextNode(', '));
+        li.appendChild(salarySpan);
+    
+        let deleteLink = document.createElement('a');
+        deleteLink.href = '#';
+        deleteLink.textContent = 'Delete';
+        deleteLink.classList.add('delete-link');
+        deleteLink.addEventListener('click', () => ul.removeChild(li));
+    
+        li.appendChild(document.createTextNode(' ['));
+        li.appendChild(deleteLink);
+        li.appendChild(document.createTextNode(']'));
+    
+        return li;
+      }
+    
+      function addNewEmployee() {
+        const newName = document.getElementById('newName').value;
+        const newAge = document.getElementById('newAge').value;
+        const newSalary = document.getElementById('newSalary').value;
+    
+        if (newName && newAge && newSalary) {
+          const newEmployee = { name: newName, age: newAge, salary: newSalary };
+          const newLi = createEmployeeListItem(newEmployee);
+          ul.appendChild(newLi);
+    
+          // Очищаем поля формы
+          document.getElementById('newName').value = '';
+          document.getElementById('newAge').value = '';
+          document.getElementById('newSalary').value = '';
+        }
+      }
+    
+      function editField(element, field) {
+        const input = document.createElement('input');
+        input.value = element.textContent.split(': ')[1].trim();
+    
+        input.addEventListener('blur', () => {
+          element.textContent = `${field.charAt(0).toUpperCase() + field.slice(1)}: ${input.value}`;
+          input.remove();
+        });
+    
+        element.textContent = '';
+        element.appendChild(input);
+        input.focus();
+      }
+    </script>
+</body>
+</html>
